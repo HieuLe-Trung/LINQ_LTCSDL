@@ -1,0 +1,10 @@
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\bin\Debug\netcoreapp3.1\QLBH.Common.deps.json
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\bin\Debug\netcoreapp3.1\QLBH.Common.dll
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\bin\Debug\netcoreapp3.1\QLBH.Common.pdb
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.AssemblyInfoInputs.cache
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.AssemblyInfo.cs
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.dll
+C:\Users\admin\Desktop\LINQ_LTCSDL\API_07_05_24\QLBH.Common\obj\Debug\netcoreapp3.1\QLBH.Common.pdb

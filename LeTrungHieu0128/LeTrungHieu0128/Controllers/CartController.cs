@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using System.Web;
 using System.Web.Mvc;
 using LeTrungHieu0128.Models;
@@ -9,6 +10,7 @@ namespace LeTrungHieu0128.Controllers
 {
     public class CartController : Controller
     {
+        NorthwindDataContext da = new NorthwindDataContext();
         // GET: Cart
         public ActionResult Index()
         {
@@ -117,6 +119,60 @@ namespace LeTrungHieu0128.Controllers
             {
                 return View();
             }
+        }
+        public ActionResult OrderProduct()
+        {
+            using (TransactionScope tranScope = new TransactionScope())
+            {
+                try
+                {
+                    //1. Tao mới 1 đơn hàng luu trong orders: chi them ngay dat hang
+                    Order order = new Order();
+                    order.OrderDate = DateTime.Now;
+                    da.Orders.InsertOnSubmit(order);
+                    da.SubmitChanges();
+
+                    //2.Có bao nhiêu SP tạo moi bấy nhiêu dòng trong orderdetails 
+                    //21 Lay ds cac sp trong gio hang
+                    List<CartModel> carts = GetListCarts(); // Get the list of items in the cart
+
+                    foreach (var item in carts)
+                    {
+                        //Tao moi orderdetals
+                        Order_Detail d = new Order_Detail();
+
+                        //Thiet lap cac thuoc tinh
+                        d.OrderID = order.OrderID;
+                        d.ProductID = item.ProductID;
+                        d.Quantity = short.Parse(item.Quantity.ToString());
+                        d.UnitPrice = decimal.Parse(item.UnitPrice.ToString());
+                        d.Discount = 0;
+
+                        // Add to order details
+                        da.Order_Details.InsertOnSubmit(d);
+                    }
+
+                    // Save changes
+                    da.SubmitChanges();
+
+                    // Clear the cart
+                    Session["CartModel"] = null;
+
+                    tranScope.Complete();
+                    return RedirectToAction("OrderDetailsList");
+                }
+                catch (Exception)
+                {
+                    tranScope.Dispose();
+                    return RedirectToAction("ListCarts");
+                }
+            }
+            
+        }
+        public ActionResult OrderDetailsList()
+        {
+            var ds = da.Order_Details.OrderByDescending(s => s.OrderID).ToList();
+            return View(ds);
         }
     }
 }
